@@ -1,0 +1,455 @@
+/* =============================================
+   SOPHROKARE - Styles d'impression
+   Optimisé pour économiser l'encre
+   ============================================= */
+
+   @media print {
+    
+    /* ===== RESET GÉNÉRAL ===== */
+    * {
+        background: transparent !important;
+        color: black !important;
+        box-shadow: none !important;
+        text-shadow: none !important;
+    }
+    
+    /* ===== STRUCTURE DE PAGE ===== */
+    @page {
+        margin: 2cm;
+        size: A4 portrait;
+    }
+    
+    body {
+        font-family: Georgia, 'Times New Roman', serif;
+        font-size: 12pt;
+        line-height: 1.5;
+        color: #000;
+        background: #fff;
+    }
+    
+    /* ===== MASQUER LES ÉLÉMENTS NON IMPRIMABLES ===== */
+    .navbar,
+    .btn,
+    .btn-appointment,
+    .btn-primary-custom,
+    .btn-outline-secondary,
+    .btn-cta-tarif,
+    .back-to-top,
+    .cookie-banner,
+    .modal,
+    .modal-backdrop,
+    footer,
+    nav,
+    #calModal,
+    .profile-photo::before,
+    .profile-photo::after,
+    .hero-section::before,
+    .hero-section::after,
+    [onclick],
+    [data-bs-toggle],
+    .skip-to-main {
+        display: none !important;
+    }
+    
+    /* ===== OPTIMISATION DU CONTENU ===== */
+    
+    /* Conteneurs */
+    .container,
+    .row,
+    .col {
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+    
+    /* Sections */
+    section {
+        page-break-inside: avoid;
+        margin-bottom: 2cm;
+    }
+    
+    /* Cartes */
+    .card {
+        border: 1px solid #ddd !important;
+        page-break-inside: avoid;
+        margin-bottom: 1cm;
+        padding: 0.5cm;
+    }
+    
+    /* ===== TYPOGRAPHIE ===== */
+    
+    h1, h2, h3, h4, h5, h6 {
+        color: #000 !important;
+        page-break-after: avoid;
+        page-break-inside: avoid;
+        font-weight: bold;
+        margin-top: 1cm;
+        margin-bottom: 0.5cm;
+    }
+    
+    h1 {
+        font-size: 24pt;
+        border-bottom: 2px solid #000;
+        padding-bottom: 0.3cm;
+    }
+    
+    h2 {
+        font-size: 18pt;
+    }
+    
+    h3 {
+        font-size: 14pt;
+    }
+    
+    h4, h5, h6 {
+        font-size: 12pt;
+    }
+    
+    p {
+        margin-bottom: 0.5cm;
+        orphans: 3;
+        widows: 3;
+    }
+    
+    /* ===== LIENS ===== */
+    
+    a {
+        text-decoration: underline;
+        color: #000 !important;
+    }
+    
+    /* Afficher les URLs après les liens */
+    a[href]:after {
+        content: " (" attr(href) ")";
+        font-size: 90%;
+        font-style: italic;
+    }
+    
+    /* Sauf pour les ancres internes */
+    a[href^="#"]:after,
+    a[href^="javascript:"]:after {
+        content: "";
+    }
+    
+    /* ===== IMAGES ===== */
+    
+    img {
+        max-width: 100% !important;
+        page-break-inside: avoid;
+        display: block;
+        margin: 0.5cm auto;
+    }
+    
+    /* Masquer les images décoratives */
+    .hero-section .profile-photo,
+    .service-image {
+        display: none !important;
+    }
+    
+    /* ===== LISTES ===== */
+    
+    ul, ol {
+        margin-left: 1cm;
+        margin-bottom: 0.5cm;
+    }
+    
+    li {
+        margin-bottom: 0.2cm;
+    }
+    
+    /* ===== TABLEAUX ===== */
+    
+    table {
+        border-collapse: collapse;
+        width: 100%;
+        margin-bottom: 1cm;
+        page-break-inside: avoid;
+    }
+    
+    thead {
+        display: table-header-group;
+    }
+    
+    tr {
+        page-break-inside: avoid;
+    }
+    
+    th, td {
+        border: 1px solid #000;
+        padding: 0.3cm;
+        text-align: left;
+    }
+    
+    th {
+        background-color: #f0f0f0 !important;
+        font-weight: bold;
+    }
+    
+    /* ===== ÉLÉMENTS SPÉCIFIQUES ===== */
+    
+    /* Hero Section */
+    .hero-section {
+        background: none !important;
+        margin-top: 0 !important;
+        padding: 1cm 0 !important;
+    }
+    
+    .hero-section h1 {
+        font-size: 20pt;
+    }
+    
+    /* Section À propos */
+    .apropos-card-horizontal {
+        border: 1px solid #ddd !important;
+        padding: 0.5cm;
+    }
+    
+    .apropos-photo {
+        display: none !important;
+    }
+    
+    /* Services */
+    .service-image {
+        display: none !important;
+    }
+    
+    /* FAQ */
+    .accordion-item {
+        border: 1px solid #ddd !important;
+        margin-bottom: 0.5cm;
+        page-break-inside: avoid;
+    }
+    
+    .accordion-button {
+        background: none !important;
+        font-weight: bold;
+    }
+    
+    .accordion-collapse {
+        display: block !important;
+        height: auto !important;
+    }
+    
+    .accordion-body {
+        padding: 0.5cm;
+    }
+    
+    /* Témoignages */
+    .google-review-card {
+        border: 1px solid #ddd !important;
+        padding: 0.5cm;
+        margin-bottom: 0.5cm;
+        page-break-inside: avoid;
+    }
+    
+    .review-avatar {
+        display: none !important;
+    }
+    
+    .stars {
+        color: #000 !important;
+    }
+    
+    /* Tarifs */
+    .timeline-grid {
+        display: block !important;
+    }
+    
+    .timeline-card-compact {
+        border: 1px solid #ddd !important;
+        padding: 0.5cm;
+        margin-bottom: 0.5cm;
+        page-break-inside: avoid;
+    }
+    
+    .card-icon-inline {
+        display: inline-block;
+        background: none !important;
+        border: 1px solid #000 !important;
+        width: 1cm;
+        height: 1cm;
+        text-align: center;
+        line-height: 1cm;
+    }
+    
+    /* ===== ALERTES ET ENCADRÉS ===== */
+    
+    .alert {
+        border: 2px solid #000 !important;
+        padding: 0.5cm;
+        margin-bottom: 0.5cm;
+        page-break-inside: avoid;
+    }
+    
+    /* ===== BADGES ET ÉTIQUETTES ===== */
+    
+    .badge {
+        border: 1px solid #000 !important;
+        padding: 0.1cm 0.3cm;
+        background: none !important;
+        color: #000 !important;
+    }
+    
+    /* ===== OPTIMISATION PAGES LÉGALES ===== */
+    
+    /* Structure pour mentions légales */
+    main {
+        width: 100%;
+        padding: 0;
+    }
+    
+    /* Sections numérotées */
+    section h2:before {
+        font-weight: bold;
+        margin-right: 0.3cm;
+    }
+    
+    /* ===== PIED DE PAGE D'IMPRESSION ===== */
+    
+    .print-footer {
+        display: block !important;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        border-top: 1px solid #000;
+        padding-top: 0.3cm;
+        font-size: 9pt;
+        text-align: center;
+    }
+    
+    /* Ajouter URL et date */
+    body:after {
+        content: "Imprimé depuis sophrokare.fr - " attr(data-print-date);
+        display: block;
+        text-align: center;
+        font-size: 9pt;
+        margin-top: 1cm;
+        padding-top: 0.3cm;
+        border-top: 1px solid #000;
+    }
+    
+    /* ===== NUMÉROTATION DES PAGES ===== */
+    
+    @page {
+        @bottom-right {
+            content: "Page " counter(page) " sur " counter(pages);
+            font-size: 9pt;
+        }
+        
+        @bottom-left {
+            content: "SophroKare - Sophrologie à Paris";
+            font-size: 9pt;
+        }
+        
+        @top-center {
+            content: string(doctitle);
+            font-size: 9pt;
+            font-style: italic;
+        }
+    }
+    
+    
+    
+    /* ===== ÉCONOMIE D'ENCRE ===== */
+    
+    /* Remplacer les backgrounds sombres */
+    .bg-dark,
+    .bg-primary,
+    .navbar,
+    footer {
+        background: white !important;
+        color: black !important;
+    }
+    
+    /* Simplifier les bordures */
+    * {
+        border-color: #666 !important;
+    }
+    
+    /* ===== OPTIMISATIONS SPÉCIFIQUES ===== */
+    
+    /* Éviter les sauts de page intempestifs */
+    blockquote,
+    pre,
+    figure,
+    .card,
+    .timeline-card-compact,
+    .google-review-card {
+        page-break-inside: avoid;
+    }
+    
+    /* Forcer les sauts de page avant certains éléments */
+    .page-break-before {
+        page-break-before: always;
+    }
+    
+    /* ===== ICÔNES BOOTSTRAP ===== */
+    
+    /* Remplacer les icônes par du texte */
+    .bi:before {
+        font-family: inherit !important;
+        content: "►" !important;
+        font-style: normal;
+    }
+    
+    /* ===== FORMULAIRES (si présents) ===== */
+    
+    input,
+    textarea,
+    select,
+    button {
+        border: 1px solid #000 !important;
+        background: white !important;
+        color: black !important;
+        padding: 0.2cm;
+    }
+    
+    /* ===== MARGES ET ESPACEMENT ===== */
+    
+    /* Espacements optimisés */
+    .mb-5, .my-5 {
+        margin-bottom: 1cm !important;
+    }
+    
+    .mt-5, .my-5 {
+        margin-top: 1cm !important;
+    }
+    
+    .p-4, .p-5 {
+        padding: 0.5cm !important;
+    }
+    
+    /* ===== MESSAGES D'IMPRESSION ===== */
+    
+    /* Ajouter un message au début */
+    body:before {
+        content: "Document imprimé depuis www.sophrokare.fr";
+        display: block;
+        text-align: right;
+        font-size: 9pt;
+        color: #666;
+        margin-bottom: 1cm;
+        padding-bottom: 0.3cm;
+        border-bottom: 1px solid #ddd;
+    }
+    
+    /* ===== COULEURS EN NIVEAUX DE GRIS ===== */
+    
+    /* Conversion automatique en niveaux de gris */
+    * {
+        -webkit-print-color-adjust: economy;
+        print-color-adjust: economy;
+    }
+    
+    /* ===== OPTIMISATION QR CODES (si ajoutés) ===== */
+    
+    .qr-code {
+        max-width: 3cm !important;
+        max-height: 3cm !important;
+        page-break-inside: avoid;
+    }
+    
+}
+
+/* ===== FIN STYLES D'IMPRESSION ===== */
