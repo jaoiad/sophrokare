@@ -120,6 +120,23 @@
        }
    }
    
+   function revealPhoneHero(element) {
+       const phone = '06 31 19 19 13';
+       element.href = 'tel:+33631191913';
+       element.querySelector('span').textContent = phone;
+       element.onclick = null;
+       
+       // Tracking Google Analytics
+       if (typeof gtag !== 'undefined') {
+           gtag('event', 'reveal_phone', {
+               'event_category': 'engagement',
+               'event_label': 'hero'
+           });
+       }
+       
+       console.log('📞 Numéro révélé (hero)');
+   }
+   
    // ===== MODAL CAL.COM =====
    function initCalModal() {
        const calModalElement = document.getElementById('calModal');
@@ -461,6 +478,7 @@
    window.showNotification = showNotification;
    window.revealPhone = revealPhone;
    window.revealPhoneFooter = revealPhoneFooter;
+   window.revealPhoneHero = revealPhoneHero;
    
    // ===== DEBUG MODE =====
    if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
