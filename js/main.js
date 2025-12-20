@@ -53,20 +53,18 @@
        if (!statusBadge) return;
        
        function updateBadge() {
-           if (isWithinBusinessHours()) {
-               // 🟢 Disponible (Lun-Ven 9h-19h)
-               statusBadge.classList.remove('status-away');
-               statusBadge.classList.add('status-online');
-               statusBadge.innerHTML = '<span class="status-dot online"></span> Disponible';
-               console.log('🟢 Badge: Disponible');
-           } else {
-               // 🟠 Réponse sous 24h (soir/week-end)
-               statusBadge.classList.remove('status-online');
-               statusBadge.classList.add('status-away');
-               statusBadge.innerHTML = '<span class="status-dot away"></span> Réponse sous 24h';
-               console.log('🟠 Badge: Réponse sous 24h');
-           }
-       }
+        if (isWithinBusinessHours()) {
+            statusBadge.classList.remove('status-away');
+            statusBadge.classList.add('status-online');
+            statusBadge.setAttribute('data-tooltip', 'Disponible');
+            statusBadge.innerHTML = '<span class="status-dot online"></span>';
+        } else {
+            statusBadge.classList.remove('status-online');
+            statusBadge.classList.add('status-away');
+            statusBadge.setAttribute('data-tooltip', 'Réponse sous 24h');
+            statusBadge.innerHTML = '<span class="status-dot away"></span>';
+        }
+    }
        
        // Mise à jour initiale
        updateBadge();
