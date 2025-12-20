@@ -1,6 +1,6 @@
 /* =============================================
    SOPHROKARE - Script Principal
-   Version: 2.3 avec Badge de Disponibilité
+   Version: 2.4 avec Révélation Téléphone Anti-Spam
    ============================================= */
 
    'use strict';
@@ -24,6 +24,7 @@
        initCookieBanner();
        initExternalLinks();
        initAvailabilityBadge();
+       initContactForm();
        
        // Détection mobile
        if (isMobile) {
@@ -74,6 +75,47 @@
        setInterval(updateBadge, 60000);
        
        console.log('✅ Badge de disponibilité initialisé');
+   }
+   
+   // ===== RÉVÉLATION TÉLÉPHONE (Anti-Spam) =====
+   function revealPhone() {
+       const btn = document.getElementById('showPhoneBtn');
+       const phone = document.getElementById('phoneNumber');
+       
+       if (btn && phone) {
+           btn.style.display = 'none';
+           phone.style.display = 'inline-block';
+           
+           // Tracking Google Analytics
+           if (typeof gtag !== 'undefined') {
+               gtag('event', 'reveal_phone', {
+                   'event_category': 'engagement',
+                   'event_label': 'contact_section'
+               });
+           }
+           
+           console.log('📞 Numéro révélé (section contact)');
+       }
+   }
+   
+   function revealPhoneFooter() {
+       const link = document.getElementById('showPhoneFooter');
+       const phone = document.getElementById('phoneFooter');
+       
+       if (link && phone) {
+           link.style.display = 'none';
+           phone.style.display = 'inline';
+           
+           // Tracking Google Analytics
+           if (typeof gtag !== 'undefined') {
+               gtag('event', 'reveal_phone', {
+                   'event_category': 'engagement',
+                   'event_label': 'footer'
+               });
+           }
+           
+           console.log('📞 Numéro révélé (footer)');
+       }
    }
    
    // ===== MODAL CAL.COM =====
@@ -136,6 +178,26 @@
        if (loader) loader.style.display = 'block';
        
        console.log('🔄 Calendrier réinitialisé');
+   }
+   
+   // ===== FORMULAIRE DE CONTACT =====
+   function initContactForm() {
+       const form = document.getElementById('contactForm');
+       const confirmMessage = document.getElementById('confirmMessage');
+       
+       if (form && confirmMessage) {
+           form.addEventListener('submit', function(e) {
+               setTimeout(function() {
+                   confirmMessage.style.display = 'block';
+                   form.reset();
+                   setTimeout(function() {
+                       confirmMessage.style.display = 'none';
+                   }, 5000);
+               }, 1000);
+           });
+           
+           console.log('✅ Formulaire de contact initialisé');
+       }
    }
    
    // ===== SMOOTH SCROLL =====
@@ -395,17 +457,19 @@
    window.acceptCookies = acceptCookies;
    window.refuseCookies = refuseCookies;
    window.showNotification = showNotification;
+   window.revealPhone = revealPhone;
+   window.revealPhoneFooter = revealPhoneFooter;
    
    // ===== DEBUG MODE =====
    if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
        console.log('🔧 Mode DEBUG activé');
        window.SophroKare = {
-           version: '2.3',
+           version: '2.4',
            mobile: isMobile,
            isBusinessHours: isWithinBusinessHours,
            debugInfo: function() {
                console.table({
-                   'Version': '2.3',
+                   'Version': '2.4',
                    'Heures ouvrées': isWithinBusinessHours(),
                    'Mobile': isMobile
                });
