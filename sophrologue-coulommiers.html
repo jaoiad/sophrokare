@@ -96,8 +96,8 @@
                             <button class="btn btn-primary-custom rounded-pill px-4 py-3" onclick="openCalModal()">
                                 <i class="bi bi-calendar-check me-2"></i>Réserver une séance
                             </button>
-                            <a href="tel:+33631191913" class="btn btn-outline-secondary rounded-pill px-4 py-3">
-                                <i class="bi bi-telephone me-2"></i>06 31 19 19 13
+                            <a href="#" onclick="revealPhone(this); return false;" class="btn btn-outline-secondary rounded-pill px-4 py-3">
+                                <i class="bi bi-telephone me-2"></i><span>Voir le numéro</span>
                             </a>
                         </div>
                     </div>
@@ -273,6 +273,13 @@
     <script>
         function openCalModal() {
             new bootstrap.Modal(document.getElementById('calModal')).show();
+        }
+        
+        function revealPhone(element) {
+            const phone = '06 31 19 19 13';
+            element.href = 'tel:+33631191913';
+            element.querySelector('span').textContent = phone;
+            element.onclick = null;
         }
     </script>
 </body>
