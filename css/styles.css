@@ -211,20 +211,13 @@ body {
 }
 
 .profile-subtitle {
-    font-size: 1.05rem;
-    color: #6b7280;
+    font-size: 1rem;
+    color: var(--primary-purple);
     font-weight: 500;
     margin-bottom: 0.8rem;
-    line-height: 1.4;
     display: inline-flex;
     align-items: center;
-    gap: 0.3rem;
-    background: linear-gradient(135deg, rgba(125, 111, 163, 0.1) 0%, rgba(212, 168, 201, 0.1) 100%);
-    border: 2px solid var(--primary-purple);
-    padding: 0.4rem 1rem;
-    border-radius: 20px;
-    color: var(--primary-purple);
-    font-weight: 600;
+    gap: 0.4rem;
 }
 
 .profile-subtitle i {
@@ -236,26 +229,24 @@ body {
     margin-top: 0.8rem;
 }
 
-/* ===== BADGE DE DISPONIBILITÉ DYNAMIQUE ===== */
-/* ===== BADGE DE DISPONIBILITÉ SUR LA PHOTO ===== */
+/* ===== BADGE DE DISPONIBILITÉ À CÔTÉ DU NOM ===== */
 .profile-badges {
-    position: absolute;
-    top: 25px;
-    right: 25px;
-    z-index: 10;
+    display: none;
 }
 
 .status-badge {
-    display: flex;
+    display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 22px;
-    height: 22px;
+    width: 16px;
+    height: 16px;
     border-radius: 50%;
     cursor: pointer;
     position: relative;
-    border: 3px solid white;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
+    margin-left: 8px;
+    vertical-align: middle;
+    border: 2px solid white;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
     transition: all 0.3s ease;
 }
 
@@ -267,34 +258,37 @@ body {
 .status-badge::after {
     content: attr(data-tooltip);
     position: absolute;
-    top: 50%;
-    right: calc(100% + 12px);
-    transform: translateY(-50%);
-    background: rgba(0, 0, 0, 0.9);
+    bottom: calc(100% + 8px);
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(135deg, #7d6fa3 0%, #9d8cb5 100%);
     color: white;
-    padding: 0.5rem 0.85rem;
-    border-radius: 8px;
-    font-size: 0.85rem;
-    font-weight: 600;
+    padding: 0.3rem 0.7rem;
+    border-radius: 12px;
+    font-size: 0.65rem;
+    font-weight: 500;
     white-space: nowrap;
     opacity: 0;
     visibility: hidden;
     transition: all 0.3s ease;
     pointer-events: none;
+    box-shadow: 0 2px 8px rgba(125, 111, 163, 0.25);
+    z-index: 100;
 }
 
 /* Flèche du tooltip */
 .status-badge::before {
     content: '';
     position: absolute;
-    top: 50%;
-    right: calc(100% + 4px);
-    transform: translateY(-50%);
-    border: 6px solid transparent;
-    border-left-color: rgba(0, 0, 0, 0.9);
+    bottom: calc(100% + 2px);
+    left: 50%;
+    transform: translateX(-50%);
+    border: 5px solid transparent;
+    border-top-color: #7d6fa3;
     opacity: 0;
     visibility: hidden;
     transition: all 0.3s ease;
+    z-index: 100;
 }
 
 .status-badge:hover::after,
@@ -303,12 +297,11 @@ body {
     visibility: visible;
 }
 
-/* Cache le span status-dot car le badge lui-même est le point */
 .status-dot {
     display: none;
 }
 
-/* État: Disponible (vert) - Lun-Ven 9h-19h */
+/* État: Disponible (vert) */
 .status-badge.status-online {
     background: #10b981;
     animation: pulse-green 2s infinite;
@@ -316,14 +309,14 @@ body {
 
 @keyframes pulse-green {
     0%, 100% {
-        box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7), 0 2px 10px rgba(0, 0, 0, 0.25);
+        box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7), 0 2px 6px rgba(0, 0, 0, 0.2);
     }
     50% {
-        box-shadow: 0 0 0 10px rgba(16, 185, 129, 0), 0 2px 10px rgba(0, 0, 0, 0.25);
+        box-shadow: 0 0 0 8px rgba(16, 185, 129, 0), 0 2px 6px rgba(0, 0, 0, 0.2);
     }
 }
 
-/* État: Réponse sous 24h (orange) - Soir/Week-end */
+/* État: Réponse sous 24h (orange) */
 .status-badge.status-away {
     background: #f59e0b;
     animation: pulse-orange 2s infinite;
@@ -331,43 +324,13 @@ body {
 
 @keyframes pulse-orange {
     0%, 100% {
-        box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.7), 0 2px 10px rgba(0, 0, 0, 0.25);
+        box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.7), 0 2px 6px rgba(0, 0, 0, 0.2);
     }
     50% {
-        box-shadow: 0 0 0 10px rgba(245, 158, 11, 0), 0 2px 10px rgba(0, 0, 0, 0.25);
+        box-shadow: 0 0 0 8px rgba(245, 158, 11, 0), 0 2px 6px rgba(0, 0, 0, 0.2);
     }
 }
 
-/* Responsive mobile - tooltip en bas */
-@media (max-width: 768px) {
-    .profile-badges {
-        top: 15px;
-        right: 15px;
-    }
-    
-    .status-badge {
-        width: 18px;
-        height: 18px;
-        border-width: 2px;
-    }
-    
-    .status-badge::after {
-        top: calc(100% + 10px);
-        right: auto;
-        left: 50%;
-        transform: translateX(-50%);
-    }
-    
-    .status-badge::before {
-        top: calc(100% + 2px);
-        right: auto;
-        left: 50%;
-        transform: translateX(-50%);
-        border: 6px solid transparent;
-        border-bottom-color: rgba(0, 0, 0, 0.9);
-        border-left-color: transparent;
-    }
-}
 /* Badge certifié inline simplifié */
 .certification-badge-inline {
     display: inline-flex;
@@ -382,49 +345,49 @@ body {
     font-size: 1.1rem;
 }
 
-/* ===== PHOTO DE PROFIL HERO AMÉLIORÉE ===== */
-.profile-photo-enhanced {
-    width: 320px;
-    height: 320px;
-    position: relative;
-    border-radius: 50%;
-    overflow: visible;
-    animation: floatAnimation 6s ease-in-out infinite;
-}
+    /* ===== PHOTO DE PROFIL HERO AMÉLIORÉE ===== */
+    .profile-photo-enhanced {
+        width: 320px;
+        height: 320px;
+        position: relative;
+        border-radius: 50%;
+        overflow: visible;
+        animation: floatAnimation 6s ease-in-out infinite;
+    }
 
-@keyframes floatAnimation {
-    0%, 100% { 
-        transform: translateY(0px); 
+    @keyframes floatAnimation {
+        0%, 100% { 
+            transform: translateY(0px); 
+        }
+        50% { 
+            transform: translateY(-15px); 
+        }
     }
-    50% { 
-        transform: translateY(-15px); 
-    }
-}
 
-/* Cercle décoratif en arrière-plan */
-.profile-photo-enhanced::before {
-    content: '';
-    position: absolute;
-    top: -20px;
-    left: -20px;
-    right: -20px;
-    bottom: -20px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, rgba(125, 111, 163, 0.2) 0%, rgba(212, 168, 201, 0.2) 100%);
-    animation: pulse 3s ease-in-out infinite;
-    z-index: -1;
-}
+    /* Cercle décoratif en arrière-plan */
+    .profile-photo-enhanced::before {
+        content: '';
+        position: absolute;
+        top: -20px;
+        left: -20px;
+        right: -20px;
+        bottom: -20px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, rgba(125, 111, 163, 0.2) 0%, rgba(212, 168, 201, 0.2) 100%);
+        animation: pulse 3s ease-in-out infinite;
+        z-index: -1;
+    }
 
-@keyframes pulse {
-    0%, 100% { 
-        transform: scale(1); 
-        opacity: 0.5; 
+    @keyframes pulse {
+        0%, 100% { 
+            transform: scale(1); 
+            opacity: 0.5; 
+        }
+        50% { 
+            transform: scale(1.1); 
+            opacity: 0.8; 
+        }
     }
-    50% { 
-        transform: scale(1.1); 
-        opacity: 0.8; 
-    }
-}
 
 /* Container de l'image avec bordure dégradée */
 .photo-wrapper {
@@ -1449,10 +1412,6 @@ footer a:focus {
         font-size: 0.95rem;
     }
     
-    .status-badge {
-        font-size: 0.85rem;
-    }
-    
     /* Force l'ordre sur mobile */
     .hero-section .row {
         display: flex;
@@ -1504,15 +1463,6 @@ footer a:focus {
         width: 240px;
         height: 240px;
         margin-bottom: 2.5rem;
-    }
-    
-    .availability-badge {
-        font-size: 0.8rem;
-    }
-    
-    .availability-badge::before {
-        width: 6px;
-        height: 6px;
     }
     
     .hero-section h1 {
