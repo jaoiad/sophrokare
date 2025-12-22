@@ -1613,3 +1613,13 @@ footer a:focus {
     color: var(--primary-purple);
     font-size: 1.2rem;
 }
+
+/* ===== MODAL BACKDROP VIOLET ===== */
+.modal-backdrop {
+    --bs-backdrop-bg: #7d6fa3 !important;
+    background-color: #7d6fa3 !important;
+}
+
+.modal-backdrop.show {
+    opacity: 0.85 !important;
+}
