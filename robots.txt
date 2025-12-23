@@ -1,50 +1,8 @@
 # robots.txt pour SophroKare
-# Dernière mise à jour : 10/10/2025
+# Dernière mise à jour : 23/12/2025
 
-# Autoriser tous les robots par défaut
 User-agent: *
 Allow: /
-
-# Bloquer les pages légales (déjà noindex dans le HTML)
-Disallow: /mentions-legales.html
-Disallow: /politique-confidentialite.html
-Disallow: /cgv.html
-
-# Bloquer les dossiers techniques
-Disallow: /cgi-bin/
-Disallow: /tmp/
-Disallow: /admin/
 Disallow: /.git/
 
-# Autoriser CSS et JS pour le rendu
-Allow: /css/
-Allow: /js/
-Allow: /images/
-
-# Bloquer les fichiers sensibles
-Disallow: /*.log$
-Disallow: /*.sql$
-Disallow: /*.env$
-
-# Robots spécifiques
-User-agent: Googlebot
-Allow: /
-
-User-agent: Googlebot-Image
-Allow: /images/
-
-User-agent: Bingbot
-Allow: /
-
-# Bloquer les mauvais robots
-User-agent: MJ12bot
-Disallow: /
-
-User-agent: AhrefsBot
-Disallow: /
-
-User-agent: SemrushBot
-Crawl-delay: 10
-
-# Sitemap
 Sitemap: https://www.sophrokare.fr/sitemap.xml
